@@ -1,0 +1,73 @@
+$zIndexDimmer: 0;
+$zIndexSelection: 1;
+$zIndexMask: 2;
+$zIndexClose: 3;
+
+.pinSnapperOverlay {
+    position: fixed;
+    z-index: 999999999; // above everything else in the page
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    .selection {
+        // TODO: Integrate autoprefixer
+        -webkit-border-image: url('../web_images/ants2.gif') 1 repeat repeat;
+
+        position: fixed;
+        z-index: $zIndexSelection;
+        border-width: 1px;
+        background-color: #fff;
+    }
+
+    .mask {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        cursor: crosshair;
+        z-index: $zIndexMask;
+    }
+
+    .dimmer {
+        background-color: rgba(0, 0, 0, 0.2);
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: $zIndexDimmer;
+    }
+
+    .close {
+        $file: '../web_images/close.png';
+
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        width: image-width($file);
+        height: image-height($file);
+        z-index: $zIndexClose;
+        cursor: pointer;
+        background: #ededed url($file) center center no-repeat;
+        padding: 9px;
+        border-radius: 3px;
+
+        box-shadow:  0 1px 4px rgba(0, 0, 0, 0.74);
+
+        &:hover {
+            $file: '../web_images/close_hover.png';
+
+            background-color: #d62229;
+            background-image: url($file);
+        }
+    }
+
+    .hidden {
+        visibility: hidden;
+    }
+}
+
+
