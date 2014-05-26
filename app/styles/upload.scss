@@ -11,6 +11,11 @@ $zIndexClose: 3;
     top: 0;
     bottom: 0;
 
+    *  {
+        // Compensate for sites that reset box-sizing on all elements (e.g. GitHub)
+        box-sizing: content-box;
+    }
+
     .selection {
         // TODO: Integrate autoprefixer
         -webkit-border-image: url('../web_images/ants2.gif') 1 repeat repeat;

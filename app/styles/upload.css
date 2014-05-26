@@ -8,6 +8,10 @@
   bottom: 0;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/cdanford\/Documents\/pinsnapper\/app\/styles\/upload\.scss}line{font-family:\0000314}}
+.pinSnapperOverlay * {
+  box-sizing: content-box;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/cdanford\/Documents\/pinsnapper\/app\/styles\/upload\.scss}line{font-family:\0000319}}
 .pinSnapperOverlay .selection {
   -webkit-border-image: url("../web_images/ants2.gif") 1 repeat repeat;
   position: fixed;
@@ -15,7 +19,7 @@
   border-width: 1px;
   background-color: #fff;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/cdanford\/Documents\/pinsnapper\/app\/styles\/upload\.scss}line{font-family:\0000324}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/cdanford\/Documents\/pinsnapper\/app\/styles\/upload\.scss}line{font-family:\0000329}}
 .pinSnapperOverlay .mask {
   position: fixed;
   top: 0;
@@ -25,7 +29,7 @@
   cursor: crosshair;
   z-index: 2;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/cdanford\/Documents\/pinsnapper\/app\/styles\/upload\.scss}line{font-family:\0000334}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/cdanford\/Documents\/pinsnapper\/app\/styles\/upload\.scss}line{font-family:\0000339}}
 .pinSnapperOverlay .dimmer {
   background-color: rgba(0, 0, 0, 0.2);
   position: fixed;
@@ -35,7 +39,7 @@
   right: 0;
   z-index: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/cdanford\/Documents\/pinsnapper\/app\/styles\/upload\.scss}line{font-family:\0000344}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/cdanford\/Documents\/pinsnapper\/app\/styles\/upload\.scss}line{font-family:\0000349}}
 .pinSnapperOverlay .close {
   position: fixed;
   top: 20px;
@@ -49,12 +53,12 @@
   border-radius: 3px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.74);
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/cdanford\/Documents\/pinsnapper\/app\/styles\/upload\.scss}line{font-family:\0000360}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/cdanford\/Documents\/pinsnapper\/app\/styles\/upload\.scss}line{font-family:\0000365}}
 .pinSnapperOverlay .close:hover {
   background-color: #d62229;
   background-image: url("../web_images/close_hover.png");
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/cdanford\/Documents\/pinsnapper\/app\/styles\/upload\.scss}line{font-family:\0000368}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/cdanford\/Documents\/pinsnapper\/app\/styles\/upload\.scss}line{font-family:\0000373}}
 .pinSnapperOverlay .hidden {
   visibility: hidden;
 }
