@@ -6,7 +6,7 @@ A Chrome Extension to screen capture rectangles on a web page and pin them to Pi
 
 ## Installation
 
-Install from Chrome Web Store
+[Install from Chrome Web Store](https://chrome.google.com/webstore/detail/pinsnapper/edamlpocaepmeldjhppnmadaieeoddba)
 
 ## Usage
 
