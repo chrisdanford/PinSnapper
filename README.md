@@ -1,6 +1,6 @@
 ## Synopsis
 
-A Chrome Extension to screen capture rectangles on a web page and pin them to Pinterest.
+PinSnapper is a Chrome Extension to screen capture rectangles on a web page and pin them to Pinterest.  Just click the PinSnapper icon, drag a rectangle, and you've created a Pin.
 
 ![animated screenshot of PinSnapper in action](https://raw.githubusercontent.com/chrisdanford/PinSnapper/master/docs/screenshot.gif)
 
