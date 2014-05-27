@@ -1,3 +1,7 @@
+// A z-index larger than any other used anywhere on the internet.// This
+// YouTube, for example, uses "1999999999"
+$largestPossibleZindex: 2147483643;
+
 $zIndexDimmer: 0;
 $zIndexSelection: 1;
 $zIndexMask: 2;
@@ -5,7 +9,7 @@ $zIndexClose: 3;
 
 .pinSnapperOverlay {
     position: fixed;
-    z-index: 999999999; // above everything else in the page
+    z-index: $largestPossibleZindex;
     left: 0;
     right: 0;
     top: 0;
