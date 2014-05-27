@@ -4,7 +4,7 @@
     "description": "The name of the application"
   },
   "appDescription": {
-    "message": "Pin anything you can see on a web page",
+    "message": "Take anything you can see on a web page, and pin it to Pinterest",
     "description": "The description of the application"
   }
 }

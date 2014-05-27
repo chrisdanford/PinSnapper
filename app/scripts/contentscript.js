@@ -175,7 +175,7 @@ var pinterest = {
         var popupOptions = 'status=no,resizable=yes,scrollbars=yes,personalbar=no,directories=no,location=no,toolbar=no,menubar=no,width=632,height=270,left=0,top=0';
         var popup = window.open(url, 'pin' + (new Date()).getTime(), popupOptions);
     }
-}
+};
 
 var snapUI = new SnapUI({
     uploadCallback: function(imageDataUri) {
