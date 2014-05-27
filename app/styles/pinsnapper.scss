@@ -7,6 +7,15 @@ $zIndexSelection: 1;
 $zIndexMask: 2;
 $zIndexClose: 3;
 
+// Reset all properties where page styles could affect our elements.
+@mixin reset {
+    // some sites set box-sizing: border-box on * (e.g. GitHub)
+    box-sizing: content-box;
+
+    margin: 0;
+    padding: 0;
+}
+
 .pinSnapperOverlay {
     position: fixed;
     z-index: $largestPossibleZindex;
@@ -16,8 +25,7 @@ $zIndexClose: 3;
     bottom: 0;
 
     *  {
-        // Compensate for sites that reset box-sizing on all elements (e.g. GitHub)
-        box-sizing: content-box;
+        @include reset();
     }
 
     .selection {
