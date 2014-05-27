@@ -29,9 +29,6 @@
       "matches": [
         "*://*/*"
       ],
-      "css": [
-        "styles/content.css"
-      ],
       "js": [
         "scripts/contentscript.js"
       ],
@@ -45,6 +42,6 @@
   ],
   "web_accessible_resources": [
     "web_images/*",
-    "styles/*"
+    "styles/pinsnapper.css"
   ]
 }
