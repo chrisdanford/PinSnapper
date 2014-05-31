@@ -2,11 +2,25 @@
 
 function onPageActionClicked(tab) {
     console.log('onPageActionClicked', tab.id);
-    var currentTabId = tab.id;
-    chrome.tabs.captureVisibleTab(null, function(dataUri) {
-        chrome.tabs.sendRequest(currentTabId, {
-            action: 'pinSnap',
-            screenshotDataUri: dataUri
+
+    // Hide all "nopin" images before taking a screenshot.
+    chrome.tabs.executeScript(tab.id, {file: 'scripts/hide_nopin.js'}, function () {
+        chrome.tabs.insertCSS(tab.id, {file: 'styles/hide_nopin.css'}, function () {
+            chrome.tabs.captureVisibleTab(null, function(dataUri) {
+                // Restore all nopin images after taking the screenshot.
+                // TODO: This delay shouldn't be necessary.  Without the delay though
+                // nopin images somehow appear in the screenshot
+                // even though the screenshot should be complete by the time this
+                // function is called.  Investigate and remove the fragile setTimeout.
+                setTimeout(function() {
+                    chrome.tabs.executeScript(tab.id, {file: 'scripts/show_nopin.js'});
+                }, 100);
+
+                chrome.tabs.sendRequest(tab.id, {
+                    action: 'pinSnap',
+                    screenshotDataUri: dataUri
+                });
+            });
         });
     });
 }

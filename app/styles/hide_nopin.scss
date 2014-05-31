@@ -1,0 +1,5 @@
+// Hide all img elements with the "nopin" attribute.
+// http://help.pinterest.com/en/articles/prevent-pinning-your-site
+body.hideNopin img[nopin] {
+    visibility: hidden !important;
+}
