@@ -83,6 +83,7 @@ SnapUI.prototype = {
         }
     },
     stop: function() {
+        this.removeStylesheet();
         if (this.div) {
             this.y = this.x = null;
             this.mask.removeEventListener('mousedown', this.onMouseDown, false);
@@ -94,7 +95,6 @@ SnapUI.prototype = {
         }
     },
     injectStylesheet: function() {
-        // Inject the stylesheet if not already
         if (!document.getElementById('pinSnapperStylesheet')) {
             var ss = document.createElement('link');
             ss.setAttribute('id', 'pinSnapperStylesheet');
@@ -104,7 +104,13 @@ SnapUI.prototype = {
             document.getElementsByTagName('head')[0].appendChild(ss);
         }
     },
-    begin2: function(snapImg) {
+    removeStylesheet: function() {
+        var ss = document.getElementById('pinSnapperStylesheet');
+        if (ss) {
+            ss.remove();
+        }
+    },
+    beginWithImage: function(snapImg) {
         this.injectStylesheet();
 
         this.init();
@@ -146,13 +152,32 @@ SnapUI.prototype = {
         var snapImg = document.createElement('img');
         var self = this;
         snapImg.onload = function() {
-            self.begin2(snapImg);
+            self.beginWithImage(snapImg);
         };
         snapImg.setAttribute('src', screenshotDataUri);
     }
 };
 
 var pinterest = {
+    getCurrentPageInfo: function() {
+        var canPin = true;
+        var noPinMessage;
+        // http://help.pinterest.com/en/articles/prevent-pinning-your-site
+        var noPinEl = document.querySelector('head > meta[name=pinterest][content=nopin]');
+        if (noPinEl) {
+            canPin = false;
+            noPinMessage = 'The website owner has specified that this page cannot be pinned.';
+            var customNoPinMessage = noPinEl.attributes.description.value;
+            if (customNoPinMessage) {
+                noPinMessage += '\n\n' + customNoPinMessage;
+            }
+        }
+
+        return {
+            canPin: canPin,
+            noPinMessage: noPinMessage
+        };
+    },
     createPin: function(pinUrl, pinImageDataUri) {
         function receiveMessage(event) {
             if (event.source !== popup) {
@@ -184,6 +209,12 @@ var snapUI = new SnapUI({
 });
 
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+    var pageInfo = pinterest.getCurrentPageInfo();
+    if (!pageInfo.canPin) {
+        alert(pageInfo.noPinMessage);
+        return;
+    }
+
     console.log('extension.onRequest action', request.action);
     if ('pinSnap' === request.action) {
         snapUI.begin(request.screenshotDataUri);
