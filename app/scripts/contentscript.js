@@ -56,6 +56,8 @@ SnapUI.prototype = {
         if (doUpload) {
             var snapImageData = this.snap.toDataURL('image/jpeg');
             this.uploadCallback.call(undefined, snapImageData);
+
+            // Free references to HTMLElements.
             this.stop();
         }
 
@@ -64,7 +66,6 @@ SnapUI.prototype = {
     onMouseUp: function(evt) {
         this.dragging = false;
         this.showPreview(evt.clientX, evt.clientY, true);
-        this.closer.classList.remove('hidden');
     },
     onMouseDown: function(evt) {
         this.dragging = true;
@@ -85,13 +86,8 @@ SnapUI.prototype = {
     stop: function() {
         this.removeStylesheet();
         if (this.div) {
-            this.y = this.x = null;
-            this.mask.removeEventListener('mousedown', this.onMouseDown, false);
-            this.mask.removeEventListener('mousemove', this.onMouseMove, false);
-            this.mask.removeEventListener('mouseup', this.onMouseUp, false);
-            document.body.removeChild(this.div);
-            this.div = null;
-            this.gotPreview = false;
+            this.div.remove();
+            this.init();
         }
     },
     injectStylesheet: function() {
@@ -209,14 +205,13 @@ var snapUI = new SnapUI({
 });
 
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
-    var pageInfo = pinterest.getCurrentPageInfo();
-    if (!pageInfo.canPin) {
-        alert(pageInfo.noPinMessage);
-        return;
-    }
-
     console.log('extension.onRequest action', request.action);
     if ('pinSnap' === request.action) {
+        var pageInfo = pinterest.getCurrentPageInfo();
+        if (!pageInfo.canPin) {
+            alert(pageInfo.noPinMessage);
+            return;
+        }
         snapUI.begin(request.screenshotDataUri);
     }
     sendResponse({
