@@ -1,11 +1,8 @@
 'use strict';
 
-var currentTabId;
-var currentTabIndex;
-
 function onPageActionClicked(tab) {
-    currentTabId = tab.id;
-    currentTabIndex = tab.index;
+    console.log('onPageActionClicked', tab.id);
+    var currentTabId = tab.id;
     chrome.tabs.captureVisibleTab(null, function(dataUri) {
         chrome.tabs.sendRequest(currentTabId, {
             action: 'pinSnap',
@@ -15,17 +12,10 @@ function onPageActionClicked(tab) {
 }
 
 function onTabUpdated(tabId, changeInfo) {
-    chrome.pageAction.onClicked.removeListener(onPageActionClicked);
-    if ('complete' === changeInfo.status) {
-        chrome.pageAction.show(tabId);
-        chrome.pageAction.onClicked.addListener(onPageActionClicked);
-    }
+    console.log('onTabUpdated', tabId, changeInfo);
+    chrome.pageAction.show(tabId);
 }
 
-chrome.pageAction.onClicked.removeListener(onPageActionClicked);
+chrome.pageAction.onClicked.addListener(onPageActionClicked);
 
 chrome.tabs.onUpdated.addListener(onTabUpdated);
-
-chrome.tabs.onActiveChanged.addListener(function(activeInfo) {
-    currentTabId = activeInfo.tabId;
-});
