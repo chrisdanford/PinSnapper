@@ -19,7 +19,7 @@ function onPageActionClicked(tab) {
         chrome.tabs.insertCSS(tab.id, {file: 'styles/pinsnapper.css'}, resolve);
     });
     var jsPromise = new Promise(function(resolve) {
-        chrome.tabs.executeScript(tab.id, {file: 'scripts/hide_nopin.js'}, resolve);
+        chrome.tabs.executeScript(tab.id, {file: 'scripts/pinsnapper.js'}, resolve);
     });
 
     Promise.all([cssPromise, jsPromise])

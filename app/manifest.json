@@ -24,18 +24,6 @@
     "omnibox": {
         "keyword": "PinSnapper"
     },
-    "content_scripts": [
-        {
-            "matches": [
-                "*://*/*"
-            ],
-            "js": [
-                "scripts/contentscript.js"
-            ],
-            "run_at": "document_end",
-            "all_frames": false
-        }
-    ],
     "permissions": [
         "tabs",
         "activeTab"
