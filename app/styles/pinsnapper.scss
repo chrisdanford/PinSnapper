@@ -57,13 +57,15 @@ $zIndexClose: 3;
     }
 
     .dimmer {
-        background-color: rgba(0, 0, 0, 0.2);
+        background-color: #fff;
         position: fixed;
         top: 0;
         left: 0;
         bottom: 0;
         right: 0;
         z-index: $zIndexDimmer;
+        background-repeat: no-repeat;
+        -webkit-filter: brightness(50%);
     }
 
     .close {

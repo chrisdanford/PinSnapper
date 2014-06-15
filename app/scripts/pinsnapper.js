@@ -95,7 +95,7 @@ SnapUI.prototype = {
 
         this.completeCallback();
     },
-    beginWithImage: function(snapImg) {
+    beginWithImage: function(snapDataUri, snapImg) {
         this.init();
 
         this.snapImg = snapImg;
@@ -111,6 +111,7 @@ SnapUI.prototype = {
 
         this.dimmer = document.createElement('div');
         this.dimmer.setAttribute('class', 'dimmer');
+        this.dimmer.style.backgroundImage = 'url(' + snapDataUri + ')';
         this.div.appendChild(this.dimmer);
 
         this.closer = document.createElement('div');
@@ -135,7 +136,7 @@ SnapUI.prototype = {
         var snapImg = document.createElement('img');
         var self = this;
         snapImg.onload = function() {
-            self.beginWithImage(snapImg);
+            self.beginWithImage(screenshotDataUri, snapImg);
         };
         snapImg.setAttribute('src', screenshotDataUri);
     }

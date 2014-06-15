@@ -17,7 +17,6 @@ PinSnapper is a Chrome Extension to screen capture rectangles on a web page and 
 ## TODO
 - Fix handling of non-100% zoom levels.
 - Consider showing the cropping UI in an iframe to avoid injecting styles into the page and doing fragile style resets.
-- Show the entire screenshot over the regular page content when selecting a rectangle.  This gives a more accurate preview of what the selection will contain on pages where there's motion.
 - Touch compatibility when selecting a rectangle.
 
 ## License
