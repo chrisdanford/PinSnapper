@@ -3,6 +3,7 @@
 var SnapUI = function(options) {
     this.init();
     this.uploadCallback = options.uploadCallback;
+    this.completeCallback = options.completeCallback;
 
     // Bind event callbacks to this object.
     this.onMouseUp = this.onMouseUp.bind(this);
@@ -89,6 +90,8 @@ SnapUI.prototype = {
             this.div.remove();
             this.init();
         }
+
+        this.completeCallback();
     },
     injectStylesheet: function() {
         if (!document.getElementById('pinSnapperStylesheet')) {
@@ -201,6 +204,9 @@ var pinterest = {
 var snapUI = new SnapUI({
     uploadCallback: function(imageDataUri) {
         pinterest.createPin(window.location.href, imageDataUri);
+    },
+    completeCallback: function() {
+        document.body.classList.remove('hideNopin');
     }
 });
 

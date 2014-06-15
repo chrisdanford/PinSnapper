@@ -1,5 +1,6 @@
 // A z-index larger than any other used anywhere on the internet.
-// YouTube, for example, uses "1999999999"
+// YouTube, for example, uses "1999999999".  This specific number
+// is ripped from the Pinterest Chrome extension.
 $largestPossibleZindex: 2147483643;
 
 $zIndexDimmer: 0;
