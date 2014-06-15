@@ -1,3 +1,10 @@
+// Hide all img elements with the "nopin" attribute.
+// http://help.pinterest.com/en/articles/prevent-pinning-your-site
+body.hideNopin img[nopin] {
+    visibility: hidden !important;
+}
+
+
 // A z-index larger than any other used anywhere on the internet.
 // YouTube, for example, uses "1999999999".  This specific number
 // is ripped from the Pinterest Chrome extension.
@@ -31,7 +38,7 @@ $zIndexClose: 3;
 
     .selection {
         // TODO: Integrate autoprefixer
-        -webkit-border-image: url('../web_images/ants2.gif') 1 repeat repeat;
+        -webkit-border-image: url('chrome-extension://__MSG_@@extension_id__/web_images/ants2.gif') 1 repeat repeat;
 
         position: fixed;
         z-index: $zIndexSelection;
@@ -69,17 +76,15 @@ $zIndexClose: 3;
         height: image-height($file);
         z-index: $zIndexClose;
         cursor: pointer;
-        background: #ededed url($file) center center no-repeat;
+        background: #ededed url('chrome-extension://__MSG_@@extension_id__/web_images/close.png') center center no-repeat;
         padding: 9px;
         border-radius: 3px;
 
         box-shadow:  0 1px 4px rgba(0, 0, 0, 0.74);
 
         &:hover {
-            $file: '../web_images/close_hover.png';
-
             background-color: #d62229;
-            background-image: url($file);
+            background-image: url('chrome-extension://__MSG_@@extension_id__/web_images/close_hover.png');
         }
     }
 

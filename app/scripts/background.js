@@ -16,13 +16,13 @@ function onPageActionClicked(tab) {
     console.log('onPageActionClicked', tab.id);
 
     var cssPromise = new Promise(function(resolve) {
-        chrome.tabs.insertCSS(tab.id, {file: 'styles/hide_nopin.css'}, resolve);
+        chrome.tabs.insertCSS(tab.id, {file: 'styles/pinsnapper.css'}, resolve);
     });
     var jsPromise = new Promise(function(resolve) {
         chrome.tabs.executeScript(tab.id, {file: 'scripts/hide_nopin.js'}, resolve);
     });
 
-    Promise.all(cssPromise, jsPromise)
+    Promise.all([cssPromise, jsPromise])
         // Fragile: the insertCSS and executeScript callback don't guarantee
         // that the styles all styles have been painted.  Delay a little
         // while to let a paint happen.  Maybe this can be made more robust

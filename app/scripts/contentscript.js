@@ -85,7 +85,6 @@ SnapUI.prototype = {
         }
     },
     stop: function() {
-        this.removeStylesheet();
         if (this.div) {
             this.div.remove();
             this.init();
@@ -93,25 +92,7 @@ SnapUI.prototype = {
 
         this.completeCallback();
     },
-    injectStylesheet: function() {
-        if (!document.getElementById('pinSnapperStylesheet')) {
-            var ss = document.createElement('link');
-            ss.setAttribute('id', 'pinSnapperStylesheet');
-            ss.type = 'text/css';
-            ss.rel = 'stylesheet';
-            ss.href = chrome.extension.getURL('styles/pinsnapper.css');
-            document.getElementsByTagName('head')[0].appendChild(ss);
-        }
-    },
-    removeStylesheet: function() {
-        var ss = document.getElementById('pinSnapperStylesheet');
-        if (ss) {
-            ss.remove();
-        }
-    },
     beginWithImage: function(snapImg) {
-        this.injectStylesheet();
-
         this.init();
 
         this.snapImg = snapImg;
